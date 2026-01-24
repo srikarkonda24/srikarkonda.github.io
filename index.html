@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srikar | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="nav-left">
+                <nav>
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                </nav>
+            </div>
+            <div class="nav-right">
+                <a href="mailto:konda.22@buckeyemail.osu.edu"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/srikarkonda/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main id="home" class="hero">
+        <div class="hero-layout">
+            <div class="sprinkle-man"></div> 
+            <div class="hero-content">
+                <h1>hi, <span class="highlight">srikar</span> here.</h1>
+                <p>I’m an OSU Chemical Engineering student with a minor in Semiconductors and an Eagle Scout. I’m focused on process engineering and material science.</p>
+                <a href="mailto:konda.22@buckeyemail.osu.edu" class="btn-say-hi">
+                    <i class="fa-solid fa-envelope"></i> Say hi!
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <section id="about" class="section-container">
+        <h2 class="section-title">/ about me</h2>
+        <p class="fade-in-text">
+            i am a student at THE ohio state university studying chemical engineering and a minor in semiconductor devices. outside of school i enjoy hanging out with friends, going on walks, and playing the guitar.
+        </p>
+    </section>
+
+    <section id="experience" class="section-container">
+        <h2 class="section-title">/ experience</h2>
+        <div class="wrapper">
+            <div class="tab-list">
+                <button class="tab-link active" onclick="openTabs(event, 'experience', 'OSU')">OSU Wexner</button>
+                <button class="tab-link" onclick="openTabs(event, 'experience', 'Chipotle')">Chipotle</button>
+                <button class="tab-link" onclick="openTabs(event, 'experience', 'Dunkin')">Dunkin'</button>
+            </div>
+
+            <div class="content-container">
+                <div id="OSU" class="tab-content" style="display: block;">
+                    <h3>Research Fellow <span class="highlight">@ The Ohio State Wexner Medical Center</span></h3>
+                    <p class="date">MAY 2025 - JULY 2025</p>
+                    <ul class="list">
+                        <li>Conducted in vitro experiments on a pancreatic cell line testing the effects of a novel new drug HOSU-53.</li>
+                    </ul>
+                </div>
+
+                <div id="Chipotle" class="tab-content" style="display: none;">
+                    <h3>Crew Member <span class="highlight">@ Chipotle</span></h3>
+                    <p class="date">MAY 2024 - AUG 2025</p>
+                    <ul class="list">
+                        <li>Provided fast, friendly service in a high-volume environment.</li>
+                        <li>Maintained food safety and cleanliness standards.</li>
+                        <li>Collaborated with team members to ensure efficient operations.</li>
+                    </ul>
+                </div>
+
+                <div id="Dunkin" class="tab-content" style="display: none;">
+                    <h3>Crew Member <span class="highlight">@ Dunkin' Donuts</span></h3>
+                    <p class="date">MAY 2023 - APRIL 2024</p>
+                    <ul class="list">
+                        <li>Prepared and served beverages and food orders accurately and efficiently.</li>
+                        <li>Assisted in daily store operations and customer service.</li>
+                        <li>Managed transactions and maintained a clean workspace.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section-container">
+        <h2 class="section-title">/ projects</h2>
+        <div class="wrapper">
+            <div class="tab-list">
+                <button class="tab-link active" onclick="openTabs(event, 'projects', 'Bike')">Motorized Bicycle</button>
+            </div>
+
+            <div class="content-container">
+                <div id="Bike" class="tab-content" style="display: block;">
+                    <h3>Turning my bicycle into a motorcycle <span class="highlight"></span></h3>
+                    <p class="date">JAN 2024 - MAY 2024</p>
+                    <img src="bicycle.jpg" alt="Motorized Bicycle" class="project-img">
+                    <ul class="list">
+                        <li>Remember when you were a kid and when riding your bike you would always pretend that your riding a motorcycle? Well, in my senior year of high school, I decided to turn into a reality.
+
+I attached a 2 stroke 80 cc engine to my bicycle and with only a single gear, I was able to achieve a max speed of 30mph. </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function openTabs(evt, sectionId, contentId) {
+            const section = document.getElementById(sectionId);
+            const contents = section.getElementsByClassName("tab-content");
+            const links = section.getElementsByClassName("tab-link");
+
+            // Hide all tab contents in THIS section only
+            for (let i = 0; i < contents.length; i++) {
+                contents[i].style.display = "none";
+            }
+
+            // Remove 'active' class from all buttons in THIS section only
+            for (let i = 0; i < links.length; i++) {
+                links[i].classList.remove("active");
+            }
+
+            // Show the clicked content and set button to active
+            document.getElementById(contentId).style.display = "block";
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+<footer class="footer">
+        <p>Built and designed by Srikar Konda.</p>
+        <p>All rights reserved. ©</p>
+    </footer>
+</html>
