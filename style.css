@@ -1,35 +1,89 @@
 /* RESET & CORE */
 html { scroll-behavior: smooth; }
-body { background-color: #0a192f; color: #8892b0; font-family: 'Inter', sans-serif; margin: 0; }
+body { background-color: #0a192f; color: #8892b0; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
 /* NAV */
 header { position: fixed; top: 0; width: 100%; padding: 20px 0; background-color: rgba(10, 25, 47, 0.95); z-index: 1000; }
 .nav-container { display: flex; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 50px; }
-nav a { text-decoration: none; color: #ccd6f6; margin-right: 30px; font-size: 0.9rem; }
+nav a { text-decoration: none; color: #ccd6f6; margin-right: 30px; font-size: 0.9rem; transition: color 0.2s; }
 nav a:hover, .nav-right a:hover { color: #64ffda; }
 .nav-right a { color: #ccd6f6; font-size: 1.3rem; margin-left: 20px; }
 .highlight { color: #64ffda; }
 
-/* HERO */
+/* HERO SECTION */
 .hero { height: 100vh; display: flex; align-items: center; justify-content: center; }
 .hero-layout { display: flex; align-items: center; gap: 80px; max-width: 1100px; }
-.hero-content h1 { font-size: 4rem; color: #ccd6f6; margin: 0; }
+
+/* TYPING WRAPPER - FIXES CURSOR ATTACHMENT */
+.typing-wrapper {
+    display: inline-flex; 
+    align-items: center;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.typing-text {
+    font-size: 4rem;
+    color: #ccd6f6;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    will-change: width;
+    animation: typing 1.5s steps(20, end) forwards;
+}
+
+/* SMOOTH FADING CURSOR */
+.cursor {
+    display: inline-block;
+    width: 4px;
+    height: 3.5rem;
+    background-color: #64ffda;
+    margin-left: 0;
+    will-change: opacity;
+    animation: smoothFade 1.2s ease-in-out infinite; 
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 445px; } /* Exact width for "hi, srikar here" */
+}
+
+@keyframes smoothFade {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+.hero-sub {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.8s ease forwards 1.6s;
+}
+
+/* DECORATION */
 .sprinkle-man {
     width: 300px; height: 400px;
     background: radial-gradient(circle, #64ffda 1px, transparent 1px);
-    background-size: 12px 12px; opacity: 0.2;
+    background-size: 12px 12px; opacity: 0.15;
     mask-image: linear-gradient(to bottom, black, transparent);
 }
+
 .btn-say-hi { 
     display: inline-block; padding: 12px 24px; border: 1px solid #64ffda; 
     color: #64ffda; text-decoration: none; border-radius: 4px; margin-top: 20px; 
+    transition: background 0.3s;
 }
+.btn-say-hi:hover { background: rgba(100, 255, 218, 0.1); }
 
 /* SECTIONS */
 .section-container { padding: 100px 15%; min-height: 50vh; }
 .section-title { color: #64ffda; font-size: 2rem; margin-bottom: 30px; }
-.fade-in-text { font-size: 1.5rem; color: #ccd6f6; line-height: 1.8; opacity: 0; animation: fadeIn 1.5s forwards; }
-@keyframes fadeIn { to { opacity: 1; transform: translateY(0); } from { opacity: 0; transform: translateY(10px); } }
+.fade-in-text { font-size: 1.5rem; color: #ccd6f6; line-height: 1.8; opacity: 0; animation: fadeIn 1s forwards; animation-delay: 2s; }
+
+@keyframes fadeIn { 
+    to { opacity: 1; transform: translateY(0); } 
+    from { opacity: 0; transform: translateY(15px); } 
+}
 
 /* TABS SYSTEM */
 .wrapper { display: flex; gap: 40px; margin-top: 30px; }
@@ -46,21 +100,10 @@ nav a:hover, .nav-right a:hover { color: #64ffda; }
 .tab-content { display: none; width: 100%; animation: tabFade 0.4s ease; }
 @keyframes tabFade { from { opacity: 0; } to { opacity: 1; } }
 
-.date { font-size: 0.8rem; margin: 10px 0; letter-spacing: 1px; }
+.date { font-size: 0.8rem; margin: 10px 0; color: #ccd6f6; }
 .list { list-style: none; padding: 0; }
-.list li { margin-bottom: 12px; line-height: 1.6; }
-.list li::before { content: "▹"; color: #64ffda; margin-right: 12px; }
+.list li { margin-bottom: 12px; line-height: 1.6; position: relative; padding-left: 25px; }
+.list li::before { content: "▹"; color: #64ffda; position: absolute; left: 0; }
 .project-img { width: 100%; max-width: 350px; border-radius: 4px; margin: 20px 0; border: 1px solid #233554; }
 
-.footer {
-    text-align: center;
-    padding: 40px 0;
-    margin-top: 50px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-    color: #8892b0; /* Matches the secondary text color of the theme */
-}
-
-.footer p {
-    margin: 5px 0;
-}
+.footer { text-align: center; padding: 60px 0; font-size: 0.85rem; color: #8892b0; }
