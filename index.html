@@ -46,10 +46,10 @@
         <h2 class="section-title">/ about me</h2>
         <div class="about-content">
             <p>
-                My journey into engineering didn't start in a lab; it started in my garage. Whether it was mounting an 80cc engine to my bicycle just to see if I could motorize it, or buying drain cleaner from Lowe’s to utilize the sulfuric acid for a homemade wet cell battery, I’ve always been driven by the 'how' and 'why' of things.
+                My journey into engineering didn't start in a classroom; it started in my garage. Whether it was mounting an 80cc engine to my bicycle just to see if I could motorize it, or buying drain cleaner from Lowe’s to utilize the sulfuric acid for a homemade wet cell battery, I’ve always been driven by the 'how' and 'why' of things.
             </p>
             <p>
-                Today, I’m a Chemical Engineering student at <strong>The Ohio State University</strong> with a minor in <strong>Semiconductor Devices</strong>. I’ve traded the 2-stroke engine and DIY batteries for a focus on materials science and process engineering in order to push the frontiers of what is possible.
+                Today, I’m a Honors Chemical Engineering student at <strong>The Ohio State University</strong> with a minor in <strong>Semiconductor Devices</strong>. I’ve traded the 2-stroke engine and DIY batteries for a focus on materials science and process engineering in order to push the frontiers of what is possible.
             </p>
             <p>
                 When I’m not in the lab, you can find me hanging out with friends, going on walks, or thinking about how much I miss the free Chipotle meals from my high school job.
@@ -100,13 +100,34 @@
         <h2 class="section-title">/ projects</h2>
         <div class="wrapper">
             <div class="tab-list">
-                <button class="tab-link active" onclick="openTabs(event, 'projects', 'Bike')">Bicycle -> Motorcycle</button>
+                <button class="tab-link active" onclick="openTabs(event, 'projects', 'Web')">Personal Website</button>
+                <button class="tab-link" onclick="openTabs(event, 'projects', 'Bike')">Bicycle -> Motorcycle</button>
                 <button class="tab-link" onclick="openTabs(event, 'projects', 'Battery')">Homemade Wet Cell Battery</button>
             </div>
 
             <div class="content-container">
-                <div id="Bike" class="tab-content" style="display: block;">
-                    <h3>Turning my bicycle into a motorcycle</h3>
+                <div id="Web" class="tab-content" style="display: block;">
+                    <h3>Personal Portfolio Website</h3>
+                    <p class="date">JAN 2026</p>
+                    <ul class="list">
+                        <li>The website you are looking at right now!</li>
+                        <li>Designed and developed a responsive personal portfolio using HTML5, CSS3, and JavaScript.</li>
+                        <li>Engineered smooth-scroll navigation and scroll-reveal animations to enhance user experience.</li>
+                    </ul>
+                </div>
+
+                <div id="Bike" class="tab-content" style="display: none; position: relative;">
+                    <div class="title-road-wrapper">
+                        <h3 class="road-title">Turning my bicycle into a motorcycle</h3>
+                        <div class="moto-animation">
+                            <div class="smoke-wrapper">
+                                <span class="smoke-particle"></span>
+                                <span class="smoke-particle"></span>
+                                <span class="smoke-particle"></span>
+                            </div>
+                            <span class="bike-emoji">🏍️</span>
+                        </div>
+                    </div>
                     <p class="date">JAN 2024 - MAY 2024</p>
                     <img src="bicycle.jpg" alt="Motorized Bicycle" class="project-img">
                     <ul class="list">
@@ -119,12 +140,12 @@
                     <p class="date">DEC 2023</p>
                     
 
-[Image of simple voltaic cell diagram]
+[Image of voltaic cell diagram]
 
                     <ul class="list">
                         <li>Developed a DIY battery using copper wire as a cathode and zinc from scratched pennies for the anode.</li>
                         <li>Utilized sulfuric acid from store-bought drain cleaner as the liquid electrolyte.</li>
-                        <li>Utilized multiple pill boxes in order to have each compartment act as an individual battery cell, producing enough current and voltage to power a small light bulb.</li>
+                        <li>Utilized multiple pill boxes as individual battery cells, producing enough voltage to power a small light bulb.</li>
                     </ul>
                 </div>
             </div>
@@ -136,14 +157,24 @@
     </footer>
 
     <script>
+        let hasMotoRun = false;
+
         function openTabs(evt, sectionId, contentId) {
             const section = document.getElementById(sectionId);
             const contents = section.getElementsByClassName("tab-content");
             const links = section.getElementsByClassName("tab-link");
+            
             for (let i = 0; i < contents.length; i++) { contents[i].style.display = "none"; }
             for (let i = 0; i < links.length; i++) { links[i].classList.remove("active"); }
+            
             document.getElementById(contentId).style.display = "block";
             evt.currentTarget.classList.add("active");
+
+            if (contentId === 'Bike' && !hasMotoRun) {
+                const moto = document.querySelector('.moto-animation');
+                moto.classList.add('drive-across');
+                hasMotoRun = true; 
+            }
         }
 
         const observerOptions = { threshold: 0.15 };
