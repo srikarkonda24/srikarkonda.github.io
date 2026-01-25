@@ -124,11 +124,10 @@
 
             <div class="content-container">
                 <div id="ComingSoon" class="tab-content" style="display: block;">
-                    <h3>Stay tuned for the coming months...</h3>
-                    <p class="date">JAN 2026 - PRESENT</p>
-                    <ul class="list">
-                        <li>A platform built for Buckeyes to help fellow Buckeyes solve a common day-to-day struggle. Stay tuned!</li>
-                    </ul>
+                    <div class="teaser-wrapper">
+                        <img src="notehub-teaser.png" alt="NoteHub Teaser UI" class="teaser-img">
+                        <div class="teaser-overlay-text">Coming Spring 2026</div>
+                    </div>
                 </div>
 
                 <div id="Web" class="tab-content" style="display: none;">
@@ -198,7 +197,6 @@
     </footer>
 
     <script>
-        /* --- PARTICLE ANIMATION CODE --- */
         const canvas = document.getElementById('particleCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -262,7 +260,6 @@
             requestAnimationFrame(animateParticles);
         }
 
-        /* --- EXISTING UI LOGIC --- */
         let hasMotoRun = false;
 
         function openTabs(evt, sectionId, contentId) {
@@ -296,4 +293,3 @@
     </script>
 </body>
 </html>
-
