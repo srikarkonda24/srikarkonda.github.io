@@ -9,7 +9,7 @@ body {
     -webkit-font-smoothing: antialiased; 
 }
 
-/* NEW: Background Animation Layer */
+/* Background Animation Layer */
 #particleCanvas {
     position: absolute;
     top: 0;
@@ -61,7 +61,7 @@ nav a:hover, .nav-right a:hover { color: #64ffda; }
     padding: 0 50px; 
     width: 100%; 
     position: relative;
-    z-index: 2; /* Ensures text is on top of particles */
+    z-index: 2; 
 }
 .typing-wrapper { display: inline-flex; align-items: center; position: relative; margin-bottom: 15px; }
 .typing-text { 
@@ -139,6 +139,29 @@ nav a:hover, .nav-right a:hover { color: #64ffda; }
 .tab-content { display: none; width: 100%; animation: tabFade 0.4s ease; }
 @keyframes tabFade { from { opacity: 0; } to { opacity: 1; } }
 
+/* TEASER "IMAGE ONLY" STYLING */
+.teaser-wrapper {
+    text-align: center;
+}
+
+.teaser-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #64ffda;
+    box-shadow: 0 0 30px rgba(100, 255, 218, 0.1);
+    margin-bottom: 15px;
+}
+
+.teaser-overlay-text {
+    font-family: monospace;
+    color: #64ffda;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
 .date { font-size: 0.8rem; margin: 10px 0; color: #ccd6f6; font-family: monospace; }
 .list { list-style: none; padding: 0; }
 .list li { margin-bottom: 12px; line-height: 1.6; position: relative; padding-left: 25px; }
@@ -149,6 +172,7 @@ nav a:hover, .nav-right a:hover { color: #64ffda; }
 .project-img, .research-img, .project-video { 
     border-radius: 4px; border: 1px solid #233554; object-fit: cover; transition: transform 0.3s ease;
 }
+
 .project-img { flex: 1; min-width: 200px; max-height: 250px; }
 .research-img { width: 100%; max-width: 600px; margin-top: 20px; }
 .project-video { width: 100%; margin-top: 15px; }
