@@ -9,6 +9,17 @@ body {
     -webkit-font-smoothing: antialiased; 
 }
 
+/* NEW: Background Animation Layer */
+#particleCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
 /* NAV */
 header { 
     position: fixed; 
@@ -41,7 +52,7 @@ nav a:hover, .nav-right a:hover { color: #64ffda; }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
 /* HERO SECTION */
-.hero { height: 100vh; display: flex; align-items: center; justify-content: center; }
+.hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; }
 .hero-layout { 
     display: flex; 
     align-items: flex-start; 
@@ -49,6 +60,8 @@ nav a:hover, .nav-right a:hover { color: #64ffda; }
     max-width: 1100px; 
     padding: 0 50px; 
     width: 100%; 
+    position: relative;
+    z-index: 2; /* Ensures text is on top of particles */
 }
 .typing-wrapper { display: inline-flex; align-items: center; position: relative; margin-bottom: 15px; }
 .typing-text { 
@@ -131,23 +144,14 @@ nav a:hover, .nav-right a:hover { color: #64ffda; }
 .list li { margin-bottom: 12px; line-height: 1.6; position: relative; padding-left: 25px; }
 .list li::before { content: "▹"; color: #64ffda; position: absolute; left: 0; }
 
-/* MEDIA STYLES (Images/Videos) */
-.project-gallery { 
-    display: flex; 
-    gap: 15px; 
-    margin: 25px 0; 
-    flex-wrap: wrap; 
-}
+/* MEDIA STYLES */
+.project-gallery { display: flex; gap: 15px; margin: 25px 0; flex-wrap: wrap; }
 .project-img, .research-img, .project-video { 
-    border-radius: 4px; 
-    border: 1px solid #233554; 
-    object-fit: cover; 
-    transition: transform 0.3s ease;
+    border-radius: 4px; border: 1px solid #233554; object-fit: cover; transition: transform 0.3s ease;
 }
 .project-img { flex: 1; min-width: 200px; max-height: 250px; }
 .research-img { width: 100%; max-width: 600px; margin-top: 20px; }
 .project-video { width: 100%; margin-top: 15px; }
-
 .project-img:hover { transform: scale(1.02); border-color: #64ffda; }
 
 .footer { text-align: center; padding: 60px 0; font-size: 0.85rem; color: #8892b0; }
@@ -157,10 +161,8 @@ nav a:hover, .nav-right a:hover { color: #64ffda; }
 .road-title { position: relative; padding-bottom: 5px; border-bottom: 2px solid #233554; margin: 0; }
 .moto-animation { position: absolute; top: -45px; left: -80px; opacity: 0; pointer-events: none; z-index: 10; display: flex; align-items: center; }
 .moto-icon { width: 50px; height: auto; }
-
 .smoke-wrapper { display: flex; gap: 4px; margin-right: -10px; transform: translateY(15px); }
 .smoke-particle { width: 6px; height: 6px; background: rgba(136, 146, 176, 0.4); border-radius: 50%; opacity: 0; }
-
 .drive-across { animation: driveAndWheelie 3.5s ease-in-out forwards; }
 .drive-across .smoke-particle { animation: exhaustSmoke 0.5s infinite; }
 
@@ -183,18 +185,6 @@ nav a:hover, .nav-right a:hover { color: #64ffda; }
     .typing-text { font-size: 2.5rem; }
     @keyframes typing { from { width: 0; } to { width: 280px; } }
     .wrapper { flex-direction: column; gap: 20px; }
-    .tab-list { 
-        flex-direction: row; 
-        border-left: none; 
-        border-bottom: 2px solid #233554; 
-        overflow-x: auto; 
-        min-width: 100%;
-    }
-    .tab-link { 
-        border-left: none; 
-        border-bottom: 2px solid transparent; 
-        margin-left: 0; 
-        margin-bottom: -2px; 
-        white-space: nowrap;
-    }
+    .tab-list { flex-direction: row; border-left: none; border-bottom: 2px solid #233554; overflow-x: auto; min-width: 100%; }
+    .tab-link { border-left: none; border-bottom: 2px solid transparent; margin-left: 0; margin-bottom: -2px; white-space: nowrap; }
 }
